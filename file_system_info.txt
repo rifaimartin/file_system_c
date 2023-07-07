@@ -4,8 +4,8 @@ Superblock info:
 	 size blocks: 516
 
 Inodes:
-	size: -1, first_block: -1, name: emptyfi
-	size: -1, first_block: -1, name: emptyfi
+	size: -1, first_block: 0, name: New_File
+	size: -1, first_block: 0, name: New_File
 	size: -1, first_block: -1, name: emptyfi
 	size: -1, first_block: -1, name: emptyfi
 	size: -1, first_block: -1, name: emptyfi
@@ -16,103 +16,103 @@ Inodes:
 	size: -1, first_block: -1, name: emptyfi
 
 Disk Blocks:
-	block: 0, next_block: -1
-	block: 1, next_block: -1
-	block: 2, next_block: -1
-	block: 3, next_block: -1
-	block: 4, next_block: -1
-	block: 5, next_block: -1
-	block: 6, next_block: -1
-	block: 7, next_block: -1
-	block: 8, next_block: -1
-	block: 9, next_block: -1
-	block: 10, next_block: 0
-	block: 11, next_block: 0
-	block: 12, next_block: 0
-	block: 13, next_block: 0
-	block: 14, next_block: 0
-	block: 15, next_block: 0
-	block: 16, next_block: 0
-	block: 17, next_block: 0
-	block: 18, next_block: 0
-	block: 19, next_block: 0
-	block: 20, next_block: 0
-	block: 21, next_block: 0
-	block: 22, next_block: 0
-	block: 23, next_block: 0
-	block: 24, next_block: 0
-	block: 25, next_block: 0
-	block: 26, next_block: 0
-	block: 27, next_block: 0
-	block: 28, next_block: 0
-	block: 29, next_block: 0
-	block: 30, next_block: 0
-	block: 31, next_block: 0
-	block: 32, next_block: 0
-	block: 33, next_block: 0
-	block: 34, next_block: 0
-	block: 35, next_block: 0
-	block: 36, next_block: 0
-	block: 37, next_block: 0
-	block: 38, next_block: 0
-	block: 39, next_block: 0
-	block: 40, next_block: 0
-	block: 41, next_block: 0
-	block: 42, next_block: 0
-	block: 43, next_block: 0
-	block: 44, next_block: 0
-	block: 45, next_block: 0
-	block: 46, next_block: 0
-	block: 47, next_block: 0
-	block: 48, next_block: 0
-	block: 49, next_block: 0
-	block: 50, next_block: 0
-	block: 51, next_block: 0
-	block: 52, next_block: 0
-	block: 53, next_block: 0
-	block: 54, next_block: 0
-	block: 55, next_block: 0
-	block: 56, next_block: 0
-	block: 57, next_block: 0
-	block: 58, next_block: 0
-	block: 59, next_block: 0
-	block: 60, next_block: 0
-	block: 61, next_block: 0
-	block: 62, next_block: 0
-	block: 63, next_block: 0
-	block: 64, next_block: 0
-	block: 65, next_block: 0
-	block: 66, next_block: 0
-	block: 67, next_block: 0
-	block: 68, next_block: 0
-	block: 69, next_block: 0
-	block: 70, next_block: 0
-	block: 71, next_block: 0
-	block: 72, next_block: 0
-	block: 73, next_block: 0
-	block: 74, next_block: 0
-	block: 75, next_block: 0
-	block: 76, next_block: 0
-	block: 77, next_block: 0
-	block: 78, next_block: 0
-	block: 79, next_block: 0
-	block: 80, next_block: 0
-	block: 81, next_block: 0
-	block: 82, next_block: 0
-	block: 83, next_block: 0
-	block: 84, next_block: 0
-	block: 85, next_block: 0
-	block: 86, next_block: 0
-	block: 87, next_block: 0
-	block: 88, next_block: 0
-	block: 89, next_block: 0
-	block: 90, next_block: 0
-	block: 91, next_block: 0
-	block: 92, next_block: 0
-	block: 93, next_block: 0
-	block: 94, next_block: 0
-	block: 95, next_block: 0
-	block: 96, next_block: 0
-	block: 97, next_block: 0
-	block: 98, next_block: 0
-	block: 99, next_block: 0
+	block num : 0, next_block: -2
+	block num : 1, next_block: -2
+	block num : 2, next_block: -1
+	block num : 3, next_block: -1
+	block num : 4, next_block: -1
+	block num : 5, next_block: -1
+	block num : 6, next_block: -1
+	block num : 7, next_block: -1
+	block num : 8, next_block: -1
+	block num : 9, next_block: -1
+	block num : 10, next_block: -1
+	block num : 11, next_block: -1
+	block num : 12, next_block: -1
+	block num : 13, next_block: -1
+	block num : 14, next_block: -1
+	block num : 15, next_block: -1
+	block num : 16, next_block: -1
+	block num : 17, next_block: -1
+	block num : 18, next_block: -1
+	block num : 19, next_block: -1
+	block num : 20, next_block: -1
+	block num : 21, next_block: -1
+	block num : 22, next_block: -1
+	block num : 23, next_block: -1
+	block num : 24, next_block: -1
+	block num : 25, next_block: -1
+	block num : 26, next_block: -1
+	block num : 27, next_block: -1
+	block num : 28, next_block: -1
+	block num : 29, next_block: -1
+	block num : 30, next_block: -1
+	block num : 31, next_block: -1
+	block num : 32, next_block: -1
+	block num : 33, next_block: -1
+	block num : 34, next_block: -1
+	block num : 35, next_block: -1
+	block num : 36, next_block: -1
+	block num : 37, next_block: -1
+	block num : 38, next_block: -1
+	block num : 39, next_block: -1
+	block num : 40, next_block: -1
+	block num : 41, next_block: -1
+	block num : 42, next_block: -1
+	block num : 43, next_block: -1
+	block num : 44, next_block: -1
+	block num : 45, next_block: -1
+	block num : 46, next_block: -1
+	block num : 47, next_block: -1
+	block num : 48, next_block: -1
+	block num : 49, next_block: -1
+	block num : 50, next_block: -1
+	block num : 51, next_block: -1
+	block num : 52, next_block: -1
+	block num : 53, next_block: -1
+	block num : 54, next_block: -1
+	block num : 55, next_block: -1
+	block num : 56, next_block: -1
+	block num : 57, next_block: -1
+	block num : 58, next_block: -1
+	block num : 59, next_block: -1
+	block num : 60, next_block: -1
+	block num : 61, next_block: -1
+	block num : 62, next_block: -1
+	block num : 63, next_block: -1
+	block num : 64, next_block: -1
+	block num : 65, next_block: -1
+	block num : 66, next_block: -1
+	block num : 67, next_block: -1
+	block num : 68, next_block: -1
+	block num : 69, next_block: -1
+	block num : 70, next_block: -1
+	block num : 71, next_block: -1
+	block num : 72, next_block: -1
+	block num : 73, next_block: -1
+	block num : 74, next_block: -1
+	block num : 75, next_block: -1
+	block num : 76, next_block: -1
+	block num : 77, next_block: -1
+	block num : 78, next_block: -1
+	block num : 79, next_block: -1
+	block num : 80, next_block: -1
+	block num : 81, next_block: -1
+	block num : 82, next_block: -1
+	block num : 83, next_block: -1
+	block num : 84, next_block: -1
+	block num : 85, next_block: -1
+	block num : 86, next_block: -1
+	block num : 87, next_block: -1
+	block num : 88, next_block: -1
+	block num : 89, next_block: -1
+	block num : 90, next_block: -1
+	block num : 91, next_block: -1
+	block num : 92, next_block: -1
+	block num : 93, next_block: -1
+	block num : 94, next_block: -1
+	block num : 95, next_block: -1
+	block num : 96, next_block: -1
+	block num : 97, next_block: -1
+	block num : 98, next_block: -1
+	block num : 99, next_block: -1

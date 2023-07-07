@@ -7,6 +7,38 @@ struct superblock sb;
 struct inode *inodes;
 struct disk_block *dbs;
 
+
+int find_empty_inode() {
+    for (int i = 0; i < sb.num_inodes; i++)
+    {
+        if(inodes[i].first_block == -1) {
+            return i;
+        }
+    }
+    
+    return -1;
+}
+
+int find_empty_block() {
+    for (int i = 0; i < sb.num_blocks; i++)
+    {
+        if(dbs[i].next_block_num == -1) {
+            return i;
+        }
+    }
+    
+    return -1;
+}
+
+void shorten_file(int bn) {
+    int tmp = dbs[bn].next_block_num;
+    if(tmp > 0) {
+        shorten_file(tmp);
+    }
+    dbs[bn].next_block_num = -1;
+
+}
+
 void create_fs() {
     sb.num_inodes = 10;
     sb.num_blocks = 100;
@@ -22,7 +54,7 @@ void create_fs() {
     }
 
     dbs = malloc(sizeof(struct disk_block) * sb.num_blocks);
-    for (i = 0; i < sb.num_inodes; i++)
+    for (i = 0; i < sb.num_blocks; i++)
     {
         dbs[i].next_block_num = -1;
     }
@@ -44,36 +76,33 @@ void sync_fs() {
         fwrite(&(inodes[i]), sizeof(struct inode), 1 , file);
     }
 
-    for (i = 0; i < sb.num_inodes; i++)
+    for (i = 0; i < sb.num_blocks; i++)
     {
-        fwrite(&(inodes[i]), sizeof(struct disk_block), 1 , file);
+        fwrite(&(dbs[i]), sizeof(struct disk_block), 1 , file);
     }
 
     fclose(file);
     
 }; // write file system
 
-void mount_fs(){
-     FILE *file;
+void mount_fs()
+{
+    FILE *file;
     file = fopen("fs_data", "r");
 
     // superblock
     fread(&sb, sizeof(struct superblock), 1, file);
 
     // write inodes
-    int i;
-    for (i = 0; i < sb.num_inodes; i++)
-    {
-        fread(&(inodes[i]), sizeof(struct inode), 1 , file);
-    }
+    inodes = malloc(sizeof(struct inode) * sb.num_inodes);
+    fread(inodes, sizeof(struct inode), sb.num_inodes, file);
 
-    for (i = 0; i < sb.num_inodes; i++)
-    {
-        fread(&(inodes[i]), sizeof(struct disk_block), 1 , file);
-    }
+
+    dbs = malloc(sizeof(struct disk_block) * sb.num_blocks);
+    fread(dbs, sizeof(struct disk_block), sb.num_blocks, file);
 
     fclose(file);
-};   // load a file sysmte
+}; // load a file sysmte
 
 //// printout information regarding the file
 void print_fs() {
@@ -97,7 +126,7 @@ void print_fs() {
 
     fprintf(file, "Disk Blocks:\n");
     for (int i = 0; i < sb.num_blocks; i++) {
-        fprintf(file, "\tblock: %d, next_block: %d\n", i, dbs[i].next_block_num);
+        fprintf(file, "\tblock num : %d, next_block: %d\n", i, dbs[i].next_block_num);
     }
 
     fclose(file);
@@ -108,21 +137,26 @@ void print_fs() {
 
 void run_virtual_file_system() {
     int mode;
-    printf("Enter the mode (1, 2, 3): ");
+    printf("Enter the mode (1 (create new), 2 (mount), 3 (synct)): ");
     scanf("%d", &mode);
 
     switch (mode) {
         case 1:
             printf("Running virtual file system in mode 1.\n");
-            printf("Mode 1 feature 1\n");
+            create_fs();
+            sync_fs();
+            print_fs();
             break;
         case 2:
             printf("Running virtual file system in mode 2.\n");
-            printf("Mode 1 feature 2\n");
+            mount_fs();
+            allocate_file("New_File");
+            sync_fs();
+            print_fs();
             break;
         case 3:
             printf("Running virtual file system in mode 3.\n");
-            printf("Mode 1 feature 3\n");
+            sync_fs();
             break;
         default:
             printf("Invalid mode!\n");
@@ -132,4 +166,49 @@ void run_virtual_file_system() {
 // inderection
 // direction
 
+int allocate_file(char name[8]) {
+    // find empy node
+    int in = find_empty_inode();
+    
+    // find a disk block
+    // ohh SHIT!!!, always retun 0 when i want find my empty block? why
+    int block = find_empty_block();
+    // printf("nilai bloc : %d",block);
+    // claim/occupaid
 
+    inodes[in].first_block = block;
+    dbs[block].next_block_num = -2;
+
+    strcpy(inodes[in].name, name);
+
+    // return the fule descriptor
+    return in;
+}
+
+void set_filesize(int filenum, int size)
+{
+    // how many blocks u r have?
+    int tmp = size + BLOCKSIZE - 1;
+    int num = tmp / BLOCKSIZE;
+
+    int bn = inodes[filenum].first_block;
+    num--;
+    // grow file if necessary
+    while (num > 0)
+    {
+            // check next block number
+            int next_num = dbs[bn].next_block_num;
+            if (next_num == -2)
+            {
+                int empty = find_empty_block();
+                dbs[bn].next_block_num = empty;
+                dbs[empty].next_block_num = -2;
+            }
+            bn = dbs[bn].next_block_num;
+            num--;
+    }
+
+    // shorten file if necessary
+    shorten_file(bn);
+    dbs[bn].next_block_num = -2;
+};
