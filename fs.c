@@ -150,7 +150,7 @@ void run_virtual_file_system() {
         case 2:
             printf("Running virtual file system in mode 2.\n");
             mount_fs();
-            allocate_file("New_File");
+            set_filesize(allocate_file("New_File"), 5000);
             sync_fs();
             print_fs();
             break;
@@ -188,6 +188,7 @@ int allocate_file(char name[8]) {
 void set_filesize(int filenum, int size)
 {
     // how many blocks u r have?
+    inodes[filenum].size = size;
     int tmp = size + BLOCKSIZE - 1;
     int num = tmp / BLOCKSIZE;
 
