@@ -4,11 +4,11 @@ Superblock info:
 	 size blocks: 516
 
 Inodes:
-	size: 5000, first_block: 0, name: New_File
-	size: 5000, first_block: 0, name: New_File
-	size: -1, first_block: -1, name: emptyfi
-	size: -1, first_block: -1, name: emptyfi
-	size: -1, first_block: -1, name: emptyfi
+	size: 10500, first_block: 56, name: -21:08:18
+	size: 10500, first_block: 53, name: -21:08:35
+	size: 10500, first_block: 56, name: -21:22:38
+	size: 10500, first_block: 56, name: -21:22:48
+	size: 10500, first_block: 50, name: -21:22:52
 	size: -1, first_block: -1, name: emptyfi
 	size: -1, first_block: -1, name: emptyfi
 	size: -1, first_block: -1, name: emptyfi
@@ -25,20 +25,20 @@ Disk Blocks:
 	block num : 6, next_block: 7
 	block num : 7, next_block: 8
 	block num : 8, next_block: 9
-	block num : 9, next_block: -2
-	block num : 10, next_block: -2
-	block num : 11, next_block: -1
-	block num : 12, next_block: -1
-	block num : 13, next_block: -1
-	block num : 14, next_block: -1
-	block num : 15, next_block: -1
-	block num : 16, next_block: -1
-	block num : 17, next_block: -1
-	block num : 18, next_block: -1
-	block num : 19, next_block: -1
-	block num : 20, next_block: -1
-	block num : 21, next_block: -1
-	block num : 22, next_block: -1
+	block num : 9, next_block: 10
+	block num : 10, next_block: 11
+	block num : 11, next_block: 12
+	block num : 12, next_block: 13
+	block num : 13, next_block: 14
+	block num : 14, next_block: 15
+	block num : 15, next_block: 16
+	block num : 16, next_block: 17
+	block num : 17, next_block: 18
+	block num : 18, next_block: -2
+	block num : 19, next_block: -2
+	block num : 20, next_block: -2
+	block num : 21, next_block: -2
+	block num : 22, next_block: -2
 	block num : 23, next_block: -1
 	block num : 24, next_block: -1
 	block num : 25, next_block: -1

@@ -31,7 +31,9 @@ void print_fs(); // printout information regarding the file
 void run_virtual_file_system();
 
 // create a funtion allocate file, set size and write on its
-int allocate_file(char name[8]);
+int allocate_file();
 
 void set_filesize(int filenum, int size);
 
+// put  some data into file
+void write_byte(int fileNum, int pos, char *data);

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 struct superblock sb;
 struct inode *inodes;
@@ -150,7 +151,10 @@ void run_virtual_file_system() {
         case 2:
             printf("Running virtual file system in mode 2.\n");
             mount_fs();
-            set_filesize(allocate_file("New_File"), 5000);
+            int newFileNum = allocate_file();
+            set_filesize(newFileNum, 10500);
+            char data = 'A';
+             write_byte(newFileNum, 0, &data);
             sync_fs();
             print_fs();
             break;
@@ -166,8 +170,16 @@ void run_virtual_file_system() {
 // inderection
 // direction
 
-int allocate_file(char name[8]) {
-    // find empy node
+
+int allocate_file() {
+    char name[100];
+    time_t secs = time(0);
+
+    /* convert to localtime */
+    struct tm *local = localtime(&secs);
+
+/* and set the string */
+    sprintf(name, "-%02d:%02d:%02d", local->tm_hour, local->tm_min, local->tm_sec);
     int in = find_empty_inode();
     
     // find a disk block
@@ -213,3 +225,41 @@ void set_filesize(int filenum, int size)
     shorten_file(bn);
     dbs[bn].next_block_num = -2;
 };
+
+void write_byte(int fileNum, int pos, char *data) {
+    // check if fileNum is not out of range
+    if (fileNum >= sb.num_inodes || fileNum < 0) 
+    {
+        printf("File not found!\n");
+        return;
+    }
+    // check file already closed
+    if (inodes[fileNum].first_block == -1) 
+    {
+        printf("File already closed!\n");
+        return;
+    }
+
+    // find block yg sesuai
+    int blockIdx = inodes[fileNum].first_block;
+    int bytesLeft = inodes[fileNum].size - pos;
+    while (bytesLeft > 0) {
+        if (pos < BLOCKSIZE) {
+            // we are still in the current block
+            break;
+        } else {
+            // move pointer to the next block
+            blockIdx = dbs[blockIdx].next_block_num;
+            pos -= BLOCKSIZE;
+            bytesLeft -= BLOCKSIZE;
+        }
+    }
+    if (bytesLeft <= 0) {
+        printf("Error: Cannot write data beyond the end of the file.\n");
+        return;
+    }
+
+    // write data to the corresponding block
+    memcpy(dbs[blockIdx].data + pos, data, sizeof(char));
+    printf("Data written at block index: %d\n", blockIdx);
+}
