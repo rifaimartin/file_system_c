@@ -4,11 +4,11 @@ Superblock info:
 	 size blocks: 516
 
 Inodes:
-	size: 10500, first_block: 56, name: -21:08:18
-	size: 10500, first_block: 53, name: -21:08:35
-	size: 10500, first_block: 56, name: -21:22:38
-	size: 10500, first_block: 56, name: -21:22:48
-	size: 10500, first_block: 50, name: -21:22:52
+	size: 10500, first_block: 54, name: -09:13:36
+	size: -1, first_block: -1, name: emptyfi
+	size: -1, first_block: -1, name: emptyfi
+	size: -1, first_block: -1, name: emptyfi
+	size: -1, first_block: -1, name: emptyfi
 	size: -1, first_block: -1, name: emptyfi
 	size: -1, first_block: -1, name: emptyfi
 	size: -1, first_block: -1, name: emptyfi
@@ -35,10 +35,10 @@ Disk Blocks:
 	block num : 16, next_block: 17
 	block num : 17, next_block: 18
 	block num : 18, next_block: -2
-	block num : 19, next_block: -2
-	block num : 20, next_block: -2
-	block num : 21, next_block: -2
-	block num : 22, next_block: -2
+	block num : 19, next_block: -1
+	block num : 20, next_block: -1
+	block num : 21, next_block: -1
+	block num : 22, next_block: -1
 	block num : 23, next_block: -1
 	block num : 24, next_block: -1
 	block num : 25, next_block: -1

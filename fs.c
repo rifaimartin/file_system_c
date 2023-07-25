@@ -47,6 +47,11 @@ void create_fs() {
 
     int i;
     inodes = malloc(sizeof(struct inode) * sb.num_inodes);
+
+    if (inodes == NULL) {
+        printf("Memory allocation failed for inodes");
+        return;
+    }
     for (i = 0; i < sb.num_inodes; i++)
     {
         inodes[i].size = -1;
