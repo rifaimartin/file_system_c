@@ -64,8 +64,6 @@ void create_fs() {
     {
         dbs[i].next_block_num = -1;
     }
-    
-
 }; //initiate new file system
 
 void sync_fs() {
@@ -142,9 +140,14 @@ void print_fs() {
 
 
 void run_virtual_file_system() {
-    int mode;
-    printf("Enter the mode (1 (create new), 2 (mount), 3 (synct)): ");
+    int mode, inodeIndex;
+    printf("Enter the mode (1 (create new), 2 (mount & sync), 3 (mount & synce & occupied byte): ");
     scanf("%d", &mode);
+    if (mode == 3){
+        scanf("%d", &inodeIndex);
+        printf("masuk gak");
+    }
+    
 
     switch (mode) {
         case 1:
@@ -157,15 +160,23 @@ void run_virtual_file_system() {
             printf("Running virtual file system in mode 2.\n");
             mount_fs();
             int newFileNum = allocate_file();
-            set_filesize(newFileNum, 10500);
-            char data = 'A';
-             write_byte(newFileNum, 0, &data);
+            set_filesize(newFileNum, 1500);
+            printf("newFileNum value: %d", newFileNum);
+            // // char data = 'A';
+            //  write_byte(newFileNum, 0, &data);
             sync_fs();
             print_fs();
             break;
         case 3:
             printf("Running virtual file system in mode 3.\n");
+             mount_fs();
+            // int newFileNum1 = allocate_file();
+            // set_filesize(newFileNum1, 1500);
+            // printf("newFileNum value 1: %d", newFileNum1);
+            char data = 'A';
+             write_byte(inodeIndex, 0, &data);
             sync_fs();
+            print_fs();
             break;
         default:
             printf("Invalid mode!\n");
@@ -265,6 +276,7 @@ void write_byte(int fileNum, int pos, char *data) {
     }
 
     // write data to the corresponding block
+    // copying and writing data ke posisi yg di tuju
     memcpy(dbs[blockIdx].data + pos, data, sizeof(char));
     printf("Data written at block index: %d\n", blockIdx);
 }
